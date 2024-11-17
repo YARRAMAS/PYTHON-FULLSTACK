@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Employee Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'signupstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'create_employee.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .whitebox {
+        width: 100%;
+        height: 300px;
+        background-color: white;
+        border: 2px solid #4CAF50;
+        border-radius: 10px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+  
+      .button-container {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        
+      }
+  
+      .button-container button, .button-container a {
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+  
+      .button-container button:hover, .button-container a:hover {
+        background-color: #45a049;
+      }
+  
+      .progress-container {
+        width: 80%;
+        background-color: #f3f3f3;
+        border-radius: 5px;
+        height: 30px;
+        margin-bottom: 15px;
+    }
+    #progress-bar1 {
+        height: 100%;
+        width: 40%;
+        background-color:blue; 
+        border-radius: 5px;
+    }
+    
+    #progress-bar2 {
+        height: 100%;
+        width: 100%;
+        background-color: #2196F3; 
+        border-radius: 5px;
+    }
+    
+    #progress-bar3 {
+        height: 100%;
+        width: 20%;
+        background-color: #FF9800; 
+        border-radius: 5px;
+    }
+    
+    #progress-bar4 {
+        height: 100%;
+        width: 70%;
+        background-color: #F44336; 
+        border-radius: 5px;
+    }
+
+    #progress-container1, #progress-container2, #progress-container3, #progress-container4 {
+        width: 80%;
+        margin: 10px 0;
+        display: none; 
+        color:red;
+        height:90px;
+    }
+    
+  
+      #link1 {
+        color: red; 
+      }
+      #link2 {
+        color: blue; 
+      }
+      #link3 {
+        color: black; 
+      }
+      #link4 {
+        color: green; 
+      }
+      #link5 {
+        color: orange; 
+      }
+      .label.default { background-color: gray; }
+        .label.primary { background-color: green; }
+        .label.success { background-color: #28a745; }
+        .label.danger { background-color: #dc3545; }
+        .label.info { background-color: #17a2b8; }
+        .label.warning { background-color: #ffc107; color: black; }
+
+        .alert {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .alert .close-btn {
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .alert-success {
+            background-color: #28a745;
+        }
+
+        .alert-info {
+            background-color: #17a2b8;
+        }
+
+        .alert-warning {
+            background-color: #ffc107;
+            color: black;
+        }
+
+        .alert-danger {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="profile-section">
+            <img src="https://via.placeholder.com/60" alt="Profile Picture">
+            <div class="username">Guest User</div>
+        </div>
+        <a href="{%url 'signin' %}"><i class="fas fa-home"></i> Home</a>
+        <div class="dropdown">
+            <a href="#"><i class="fas fa-user"></i> Employee</a>
+            <div class="dropdown-content">
+                <a href="{% url 'create' %}" id='create-link'><i class="fas fa-edit"></i>Create</a>
+                <a href="{%url 'search_employee'%}" id="search"><i class="fas fa-search"></i>Search</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#"><i class="fas fa-ellipsis-h"></i> More</a>
+            <div class="dropdown-content">
+                <a href="{%url 'tabs' %}"><i class="fas fa-hand-point-right"></i>Multiple Tabs</a>
+                <a href="{%url 'menu'%}"><i class="fas fa-hand-point-right"></i>Menu</a>
+                <a href="{%url 'auto'%}"><i class="fas fa-hand-point-right"></i>Autocomplete</a>
+                <a href="{%url 'collapsible'%}"><i class="fas fa-hand-point-right"></i>Collapsible Content</a>
+                <a href="{%url 'images'%}"><i class="fas fa-hand-point-right"></i>Images</a>
+                <a href="{%url 'slider'%}"><i class="fas fa-hand-point-right"></i>Slider</a>
+                <a href="{%url 'tooltips'%}"><i class="fas fa-hand-point-right"></i>Tooltips</a>
+                <a href="{%url 'popups'%}"><i class="fas fa-hand-point-right"></i>Popups</a>
+                <a href="{%url 'links'%}"><i class="fas fa-hand-point-right"></i>Links</a>
+                <a href="{%url 'cssprops'%}"><i class="fas fa-hand-point-right"></i>CSS Properties</a>
+                <a href="{%url 'iframes'%}"><i class="fas fa-hand-point-right"></i>iFrames</a>
+            </div>
+        </div>
+        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        Magnus
+        <a href="{% url 'logout' %}" class="logout" id="logout"><i class="fas fa-sign-out"></i>&nbsp;Logout</a>
+    </div>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="whitebox">
+            <div id="whitebox-content"></div>
+            <div class="button-container"><br><br>
+              <button onclick="showLink()">Links</button>
+              <button onclick="showLabel()">Labels</button>
+              <button onclick="showButtonAlert()">Button</button>
+              <button onclick="showAlert()">Alert</button>
+              <button onclick="showProgressBars()">Progress Bar</button><br><br>
+            </div>
+            <div id="progress-container1" class="progress-container">
+                <div id="progress-bar1" class="progress-bar" style="width: 40%;"></div>
+            </div>
+            <div id="progress-container2" class="progress-container">
+                <div id="progress-bar2" class="progress-bar" style="width: 100%;"></div>
+            </div>
+            <div id="progress-container3" class="progress-container">
+                <div id="progress-bar3" class="progress-bar" style="width: 20%;"></div>
+            </div>
+            <div id="progress-container4" class="progress-container">
+                <div id="progress-bar4" class="progress-bar" style="width: 70%;"></div>
+            </div>
+          </div>
+          <script>
+            function clearContent() {
+              document.getElementById('whitebox-content').innerHTML = '';
+          }
+            function showLink() {
+              clearContent();
+              document.getElementById('whitebox-content').innerHTML = `
+                <a id="link1" href="https://www.linkedin.com" target="_blank">Link1</a>&nbsp;&nbsp;
+                <a id="link2" href="https://www.google.com" target="_blank">Link2</a>&nbsp;&nbsp;
+                <a id="link3" href="https://www.instagram.com" target="_blank">Link3</a>&nbsp;&nbsp;
+                <a id="link4" href="https://www.twitter.com" target="_blank">Link4</a>&nbsp;&nbsp;
+                <a id="link5" href="https://www.youtube.com" target="_blank">Link5</a>
+              `;
+            }
+            function showLabel() {
+              clearContent();
+              document.getElementById('whitebox-content').innerHTML = `
+                <span class="label default">Default</span>
+                <span class="label primary">Primary</span>
+                <span class="label success">Success</span>
+                <span class="label danger">Danger</span>
+                <span class="label info">Info</span>
+                <span class="label warning">Warning</span>
+    
+              `;
+            }
+            function showButtonAlert() {
+                clearContent();
+                document.getElementById('whitebox-content').innerHTML=`
+                <button class="label default">Default</button>
+                <button class="label primary">Primary</button>
+                <button class="label success">Success</button>
+                <button class="label danger">Danger</button>
+                <button class="label info">Info</button>
+                <button class="label warning">Warning</button>
+                `;
+    
+            }
+            function showAlert() {
+              clearContent();
+                document.getElementById('whitebox-content').innerHTML = `
+                  <div class="alert alert-success">
+                    <span>Success! Indicates a successful or positive action.</span>
+                    <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+                  </div>
+                  <div class="alert alert-info">
+                    <span>Info! Indicates a neutral informative change or action.</span>
+                    <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+                  </div>
+                  <div class="alert alert-warning">
+                    <span>Warning! Indicates a warning that might need attention.</span>
+                    <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+                  </div>
+                  <div class="alert alert-danger">
+                    <span>Danger! Indicates a dangerous or potentially negative action.</span>
+                    <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+                  </div>
+                `;
+              }
+            function showProgressBars() {
+              clearContent();
+                document.getElementById('progress-container1').style.display = 'block';
+                document.getElementById('progress-container2').style.display = 'block';
+                document.getElementById('progress-container3').style.display = 'block';
+                document.getElementById('progress-container4').style.display = 'block';
+            }
+          </script>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+        Copyright © 2024 &nbsp;&nbsp; <a href="http://jalatechnologies.com">JALA Technologies</a>. &nbsp;All rights reserved.
+    </div>
+</body>
+</html>

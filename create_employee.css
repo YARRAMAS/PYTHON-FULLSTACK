@@ -1,0 +1,190 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    overflow:hidden;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding-top: 20px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+.card-header {
+    background-color: #007bff;
+    color:black;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card-body {
+    padding: 20px;
+}
+.form-row{
+    display: flex;
+    gap: 150px;
+    flex-wrap: wrap;
+}
+
+/* Form Controls */
+.form-group label {
+    font-weight: bold;
+    color: #555;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 8px;
+    box-shadow: none;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+/* Radio and Checkbox */
+.form-check-label {
+    margin-left: 8px;
+    color: #555;
+}
+
+.form-check-input {
+    margin-top: 0.3rem;
+    margin-left: 0;
+}
+
+/* Submit Buttons */
+.text-right {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.btn {
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Skills Section */
+.card-body .form-check {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 868px) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+table td {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table .btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 4px;
+    color: white;
+    margin-right: 5px;
+}
+
+table .btn-success {
+    background-color: #28a745;
+}
+
+table .btn-danger {
+    background-color: #dc3545;
+}
+
+table .btn:hover {
+    opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 10px;
+        position: relative;
+    }
+
+    th::before, td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+    }
+}

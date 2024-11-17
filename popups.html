@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Employee Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'signupstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'create_employee.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .box-container {
+             width: 60%;              
+            height: 600px;            
+            display: flex;
+            flex-direction:column;
+            background-color: white;   
+            border-radius: 10px;       
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+            justify-content: center;
+            align-items: center;
+          }
+          
+          
+          .popup-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width:300px;
+          }
+          
+          .popup-button:hover {
+            background-color: #45a049;
+          }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="profile-section">
+            <img src="https://via.placeholder.com/60" alt="Profile Picture">
+            <div class="username">Guest User</div>
+        </div>
+        <a href="{%url 'signin' %}"><i class="fas fa-home"></i> Home</a>
+        <div class="dropdown">
+            <a href="#"><i class="fas fa-user"></i> Employee</a>
+            <div class="dropdown-content">
+                <a href="{% url 'create' %}" id='create-link'><i class="fas fa-edit"></i>Create</a>
+                <a href="{%url 'search_employee'%}" id="search"><i class="fas fa-search"></i>Search</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#"><i class="fas fa-ellipsis-h"></i> More</a>
+            <div class="dropdown-content">
+                <a href="{%url 'tabs' %}"><i class="fas fa-hand-point-right"></i>Multiple Tabs</a>
+                <a href="{%url 'menu'%}"><i class="fas fa-hand-point-right"></i>Menu</a>
+                <a href="{%url 'auto'%}"><i class="fas fa-hand-point-right"></i>Autocomplete</a>
+                <a href="{%url 'collapsible'%}"><i class="fas fa-hand-point-right"></i>Collapsible Content</a>
+                <a href="{%url 'images'%}"><i class="fas fa-hand-point-right"></i>Images</a>
+                <a href="{%url 'slider'%}"><i class="fas fa-hand-point-right"></i>Slider</a>
+                <a href="{%url 'tooltips'%}"><i class="fas fa-hand-point-right"></i>Tooltips</a>
+                <a href="{%url 'popups'%}"><i class="fas fa-hand-point-right"></i>Popups</a>
+                <a href="{%url 'links'%}"><i class="fas fa-hand-point-right"></i>Links</a>
+                <a href="{%url 'cssprops'%}"><i class="fas fa-hand-point-right"></i>CSS Properties</a>
+                <a href="{%url 'iframes'%}"><i class="fas fa-hand-point-right"></i>iFrames</a>
+            </div>
+        </div>
+        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        Magnus
+        <a href="{% url 'logout' %}" class="logout" id="logout"><i class="fas fa-sign-out"></i>&nbsp;Logout</a>
+    </div>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="box-container">
+            
+            <button class="popup-button" id="popone">Pop One</button><br>
+            <button class="popup-button" id="poptwo">Pop Two</button><br>
+            <button class="popup-button" id="popthree">Pop Three</button><br>
+            <button class="popup-button" id="popduplicate">Pop Duplicate</button><br>
+            <button class="popup-button" id="popduplicateTab">Pop DuplicateTab</button><br>
+            <button class="popup-button" id="popinwindow">Pop InWindow</button><br>
+            <button class="popup-button" id="alertbox">Alert Box</button><br>
+            <button class="popup-button" id="confirmbox">Confirm Box</button><br>
+            <button class="popup-button" id="promptbox">Prompt Box</button><br>
+          </div>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+        Copyright © 2024 &nbsp;&nbsp; <a href="http://jalatechnologies.com">JALA Technologies</a>. &nbsp;All rights reserved.
+    </div>
+    <script>
+        document.getElementById('popone').addEventListener('click', function() {
+            window.open('https://www.google.com', '_blank', 'width=300,height=200');
+        });
+        
+        document.getElementById('poptwo').addEventListener('click', function() {
+            window.open('https://www.youtube.com', '_blank', 'width=300,height=200');
+        });
+        
+        document.getElementById('popthree').addEventListener('click', function() {
+            window.open('https://www.python.org/about/gettingstarted/', '_blank', 'width=300,height=200');
+        });
+        
+        document.getElementById('popduplicate').addEventListener('click', function() {
+            window.open('https://www.example.com', '_blank');
+        });
+
+        document.getElementById('popduplicateTab').addEventListener('click', function() {
+            window.open(window.location.href, '_blank');
+          }); 
+        
+    
+        document.getElementById('popinwindow').addEventListener('click', function() {
+            const newWindow = window.open('', '_blank', 'width=400,height=200');
+            newWindow.document.write('<h1>This is a popup in the same window</h1>');
+            newWindow.document.write('<p>You can add any content here</p>');
+        });
+        
+        document.getElementById('alertbox').addEventListener('click', function() {
+            alert('This is an alert box!');
+        });
+        
+        document.getElementById('confirmbox').addEventListener('click', function() {
+            const isConfirmed = confirm('Do you want to proceed?');
+            if (isConfirmed) {
+            alert('You confirmed the action!');
+            } else {
+            alert('You canceled the action!');
+            }
+        });
+        
+        document.getElementById('promptbox').addEventListener('click', function() {
+            const userInput = prompt('Please enter your name:');
+            if (userInput) {
+            alert('Hello, ' + userInput + '!');
+            } else {
+            alert('No name entered!');
+            }
+        });
+        
+  
+    </script>
+</body>
+</html>
